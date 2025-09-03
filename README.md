@@ -1,73 +1,155 @@
-# Welcome to your Lovable project
+# Task Tracker - Mobile Development Project
 
-## Project info
+A comprehensive task management application built with React, TypeScript, and Capacitor that demonstrates modern mobile app development practices.
 
-**URL**: https://lovable.dev/projects/89f82129-2ada-45e9-a331-8b93cd3f54bc
+## 🎯 Project Overview
 
-## How can I edit this code?
+This application fulfills the requirements for a mobile development project by providing:
 
-There are several ways of editing your application.
+- ✅ **Real Device Deployment**: Built with Capacitor for native Android/iOS deployment
+- ✅ **User Input & Environmental Data**: Forms, buttons, and device sensor integration  
+- ✅ **Version Control**: Git-based development with collaboration features
+- ✅ **Web Service Integration**: Local storage with export/import capabilities (ready for backend integration)
+- ✅ **Mobile-First Design**: Responsive UI optimized for mobile devices
 
-**Use Lovable**
+## 🚀 Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/89f82129-2ada-45e9-a331-8b93cd3f54bc) and start prompting.
+### Core Functionality
+- **Task Management**: Create, complete, and delete tasks
+- **Environment Data Collection**: Automatically captures device information, platform details, timestamps
+- **Data Persistence**: Local storage with JSON export/import
+- **Real-time Statistics**: Task completion tracking and success rates
 
-Changes made via Lovable will be committed automatically to this repo.
+### Mobile Capabilities
+- **Device Information**: Platform, model, OS version detection
+- **Native App Deployment**: Capacitor integration for iOS/Android
+- **Responsive Design**: Touch-friendly interface
+- **Offline Functionality**: Works without internet connection
 
-**Use your preferred IDE**
+### Development Features
+- **Git Integration**: Built-in version control through Lovable
+- **Team Collaboration**: Export/import for easy code sharing
+- **Modern Stack**: React 18, TypeScript, Tailwind CSS
+- **Component Architecture**: Modular, reusable components
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🛠 Technology Stack
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **Frontend**: React 18 with TypeScript
+- **Styling**: Tailwind CSS with custom design system
+- **Mobile**: Capacitor for native app deployment
+- **UI Components**: Shadcn/ui component library
+- **State Management**: React hooks with localStorage persistence
+- **Build Tool**: Vite for fast development and builds
 
-Follow these steps:
+## 📱 Mobile Deployment
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Prerequisites
+- Node.js and npm installed
+- Android Studio (for Android)
+- Xcode (for iOS, Mac only)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Development Setup
+1. Clone the repository from GitHub
+2. Install dependencies: `npm install`
+3. Run development server: `npm run dev`
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Mobile Deployment Steps
+1. **Build the project**: `npm run build`
+2. **Add mobile platforms**:
+   - Android: `npx cap add android`
+   - iOS: `npx cap add ios`
+3. **Sync with native platforms**: `npx cap sync`
+4. **Run on devices**:
+   - Android: `npx cap run android`
+   - iOS: `npx cap run ios`
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+## 🔄 Version Control & Collaboration
+
+### Git Workflow
+- All code is managed through Lovable's Git integration
+- Automatic commits for all changes
+- Easy GitHub export for team collaboration
+
+### Team Collaboration
+1. Export project to GitHub using Lovable's "Export to GitHub" feature
+2. Team members clone the repository
+3. Make changes locally or through Lovable
+4. Push changes back to the shared repository
+5. Others can pull updates and sync with `npx cap sync`
+
+### Data Sharing
+- Export task data as JSON files
+- Import data from team members
+- Perfect for testing collaboration workflows
+
+## 🌐 Web Service Integration
+
+Currently implements local storage with export/import capabilities. Ready for backend integration:
+
+### Potential Integrations
+- **Firebase**: Real-time database and authentication
+- **Supabase**: PostgreSQL backend with real-time subscriptions  
+- **REST APIs**: Custom backend services
+- **IFTTT**: Automation and external service integration
+
+### Current Data Structure
+```json
+{
+  "id": "unique-timestamp",
+  "title": "Task title",
+  "description": "Optional description", 
+  "completed": false,
+  "createdAt": "2024-01-01T00:00:00.000Z",
+  "environmentData": {
+    "device": {
+      "platform": "android",
+      "model": "device-model",
+      "osVersion": "14.0"
+    },
+    "timestamp": "2024-01-01T00:00:00.000Z",
+    "location": "Available/Not available"
+  }
+}
 ```
 
-**Edit a file directly in GitHub**
+## 📋 Project Requirements Checklist
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- [x] **Sample Application**: Task management app with modern UI
+- [x] **User Input**: Forms for task creation, buttons for interactions
+- [x] **Environmental Stimulation**: Device sensor data collection
+- [x] **Device Deployment**: Capacitor enables real device testing
+- [x] **Version Control**: Git-based development workflow
+- [x] **Documentation**: Comprehensive README and inline docs
+- [x] **Team Collaboration**: Export/import and GitHub integration
+- [x] **Partner Testing**: Easy setup for team member testing
+- [x] **Web Service**: Data persistence and sharing capabilities
 
-**Use GitHub Codespaces**
+## 🎨 Design System
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The app features a carefully crafted design system with:
+- **Dark Theme**: Modern, mobile-friendly dark interface
+- **Green Accent**: Primary color scheme with glow effects
+- **Gradient Backgrounds**: Beautiful card layouts
+- **Responsive Typography**: Optimized for mobile readability
+- **Touch Interactions**: Finger-friendly button sizes and spacing
 
-## What technologies are used for this project?
+## 🚦 Getting Started
 
-This project is built with:
+1. **Try the Web Version**: Start using the app immediately in your browser
+2. **Add Some Tasks**: Create tasks to see environment data collection
+3. **Export Data**: Test the JSON export functionality
+4. **Deploy to Mobile**: Follow the mobile deployment steps above
+5. **Share with Team**: Export to GitHub and collaborate
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📞 Support
 
-## How can I deploy this project?
+For questions about deployment or customization, refer to:
+- [Capacitor Documentation](https://capacitorjs.com/docs)
+- [Lovable Documentation](https://docs.lovable.dev)
+- Project issues and discussions on GitHub
 
-Simply open [Lovable](https://lovable.dev/projects/89f82129-2ada-45e9-a331-8b93cd3f54bc) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+**Project URL**: https://lovable.dev/projects/89f82129-2ada-45e9-a331-8b93cd3f54bc
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Built with ❤️ using Lovable
