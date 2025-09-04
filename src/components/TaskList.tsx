@@ -84,6 +84,8 @@ const TaskList = ({ tasks, onToggleComplete, onDeleteTask }: TaskListProps) => {
                   )}
                 </div>
               </div>
+
+              <span className="text-xs text-muted-foreground">{task.category}</span>
               
               <Button
                 variant="ghost"

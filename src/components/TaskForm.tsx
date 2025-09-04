@@ -17,6 +17,8 @@ const TaskForm = ({ onAddTask }: TaskFormProps) => {
   const [description, setDescription] = useState('');
   const [isCollectingEnvData, setIsCollectingEnvData] = useState(false);
   const { toast } = useToast();
+  const [category, setCategory] = useState('General'); // default category
+
 
   const collectEnvironmentData = async () => {
     setIsCollectingEnvData(true);
@@ -69,7 +71,8 @@ const TaskForm = ({ onAddTask }: TaskFormProps) => {
       description: description.trim(),
       createdAt: new Date().toISOString(),
       completed: false,
-      environmentData
+      environmentData,
+      category,
     };
 
     onAddTask(task);
@@ -104,6 +107,22 @@ const TaskForm = ({ onAddTask }: TaskFormProps) => {
               className="border-primary/30 focus:border-primary"
             />
           </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="category">Category</Label>
+            <select
+              id="category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="w-full border rounded-md px-3 py-2 border-primary/30 focus:border-primary bg-background"
+            >
+              <option value="General">General</option>
+              <option value="Work">Work</option>
+              <option value="Personal">Personal</option>
+              <option value="Urgent">Urgent</option>
+            </select>
+          </div>
+
           
           <div className="space-y-2">
             <Label htmlFor="description">Description (Optional)</Label>
