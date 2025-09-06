@@ -15,6 +15,7 @@ interface Task {
   completed: boolean;
   createdAt: string;
   environmentData?: any;
+  category: string;
 }
 
 const Index = () => {
