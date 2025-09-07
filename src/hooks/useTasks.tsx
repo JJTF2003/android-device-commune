@@ -7,6 +7,7 @@ interface Task {
   id: string;
   title: string;
   description?: string;
+  category?: string;
   completed: boolean;
   created_at: string;
   updated_at: string;
@@ -49,7 +50,7 @@ export function useTasks() {
   };
 
   // Add a new task
-  const addTask = async (taskData: { title: string; description?: string; environmentData?: any }) => {
+  const addTask = async (taskData: { title: string; description?: string; category?: string; environmentData?: any }) => {
     if (!user) return;
 
     try {
@@ -59,6 +60,7 @@ export function useTasks() {
           {
             title: taskData.title,
             description: taskData.description,
+            category: taskData.category || 'General',
             environment_data: taskData.environmentData,
             user_id: user.id,
             completed: false

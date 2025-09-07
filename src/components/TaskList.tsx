@@ -1,13 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle2, Circle, Smartphone, Calendar, MapPin, Trash2 } from 'lucide-react';
+import { CheckCircle2, Circle, Smartphone, Calendar, MapPin, Trash2, Tag } from 'lucide-react';
 import { format } from 'date-fns';
 
 interface Task {
   id: string;
   title: string;
   description?: string;
+  category?: string;
   completed: boolean;
   createdAt: string;
   environmentData?: {
@@ -68,15 +69,23 @@ const TaskList = ({ tasks, onToggleComplete, onDeleteTask }: TaskListProps) => {
                 </Button>
                 
                 <div className="flex-1">
-                  <CardTitle 
-                    className={`text-lg ${
-                      task.completed 
-                        ? 'line-through text-muted-foreground' 
-                        : 'text-foreground'
-                    }`}
-                  >
-                    {task.title}
-                  </CardTitle>
+                  <div className="flex items-center gap-2 mb-1">
+                    <CardTitle 
+                      className={`text-lg ${
+                        task.completed 
+                          ? 'line-through text-muted-foreground' 
+                          : 'text-foreground'
+                      }`}
+                    >
+                      {task.title}
+                    </CardTitle>
+                    {task.category && (
+                      <Badge variant="outline" className="text-xs">
+                        <Tag className="h-3 w-3 mr-1" />
+                        {task.category}
+                      </Badge>
+                    )}
+                  </div>
                   {task.description && (
                     <p className="text-muted-foreground mt-1 text-sm">
                       {task.description}

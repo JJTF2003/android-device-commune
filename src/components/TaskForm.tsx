@@ -4,19 +4,32 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { MapPin, Thermometer, Clock, Plus } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { MapPin, Thermometer, Clock, Plus, Tag } from 'lucide-react';
 import { Device } from '@capacitor/device';
 import { useToast } from '@/hooks/use-toast';
 
 interface TaskFormProps {
-  onAddTask: (taskData: { title: string; description?: string; environmentData?: any }) => void;
+  onAddTask: (taskData: { title: string; description?: string; category?: string; environmentData?: any }) => void;
 }
 
 const TaskForm = ({ onAddTask }: TaskFormProps) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [category, setCategory] = useState('General');
   const [isCollectingEnvData, setIsCollectingEnvData] = useState(false);
   const { toast } = useToast();
+
+  const categories = [
+    'General',
+    'Work',
+    'Personal',
+    'Shopping',
+    'Health',
+    'Learning',
+    'Travel',
+    'Finance'
+  ];
 
 
   const collectEnvironmentData = async () => {
@@ -67,6 +80,7 @@ const TaskForm = ({ onAddTask }: TaskFormProps) => {
     const taskData = {
       title: title.trim(),
       description: description.trim() || undefined,
+      category,
       environmentData
     };
 
@@ -75,6 +89,7 @@ const TaskForm = ({ onAddTask }: TaskFormProps) => {
     // Reset form
     setTitle('');
     setDescription('');
+    setCategory('General');
     
     toast({
       title: "Task added!",
@@ -112,6 +127,30 @@ const TaskForm = ({ onAddTask }: TaskFormProps) => {
               placeholder="Add more details..."
               className="border-primary/30 focus:border-primary min-h-[80px]"
             />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="category">Category</Label>
+            <Select value={category} onValueChange={setCategory}>
+              <SelectTrigger className="border-primary/30 focus:border-primary">
+                <SelectValue placeholder="Select a category">
+                  <div className="flex items-center gap-2">
+                    <Tag className="h-4 w-4" />
+                    {category}
+                  </div>
+                </SelectValue>
+              </SelectTrigger>
+              <SelectContent>
+                {categories.map((cat) => (
+                  <SelectItem key={cat} value={cat}>
+                    <div className="flex items-center gap-2">
+                      <Tag className="h-4 w-4" />
+                      {cat}
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
